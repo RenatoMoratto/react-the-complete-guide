@@ -11,13 +11,29 @@ function Expenses({ items }) {
   const filterChangeHandler = (selectedYear) => {
     setFilteredYear(selectedYear);
   };
+
+  // Task 3 - Working with lists
+  // My solution
+  // const filterByYear = (item) => {
+  //   let year = item.date.getFullYear().toString();
+
+  //   if (year === filteredYear) return item;
+  // };
+
+  // const filteredItems = items.filter(filterByYear);
+
+  // Teacher solution
+  const filteredExpenses = items.filter((expense) => {
+    return expense.date.getFullYear().toString() === filteredYear;
+  });
+
   return (
     <Card className="expenses">
       <ExpensesFilter
         selected={filteredYear}
         onFilterChange={filterChangeHandler}
       />
-      {items.map((expense) => (
+      {filteredExpenses.map((expense) => (
         <ExpenseItem
           key={expense.id}
           title={expense.title}
