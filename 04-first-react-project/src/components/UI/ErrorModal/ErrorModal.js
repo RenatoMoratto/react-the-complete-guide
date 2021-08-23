@@ -5,7 +5,7 @@ import Button from '../Button/Button';
 
 function ErrorModal(props) {
   return (
-    <div>
+    <>
       <div className={style.backdrop} onClick={props.onConfirm} />
       <Card className={style.modal}>
         <header className={style.header}>
@@ -18,7 +18,7 @@ function ErrorModal(props) {
           <Button onClick={props.onConfirm}>Okay</Button>
         </footer>
       </Card>
-    </div>
+    </>
   );
 }
 
