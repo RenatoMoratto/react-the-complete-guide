@@ -9,7 +9,7 @@ function HeaderCartButton(props) {
         <CartIcon />
       </span>
       <span>Your Card</span>
-      <span className={style.bacge}>3</span>
+      <span className={style.badge}>3</span>
     </button>
   );
 }
