@@ -27,7 +27,7 @@ function CartProvider({ children }) {
     dispatchCartAction({ type: 'ADD', item: item });
   };
 
-  const removeItemToCartHandler = (id) => {
+  const removeItemFromCartHandler = (id) => {
     dispatchCartAction({ type: 'REMOVE', id: id });
   };
 
@@ -35,7 +35,7 @@ function CartProvider({ children }) {
     items: cartState.items,
     totalAmount: cartState.totalAmount,
     addItem: addItemToCartHandler,
-    removeItem: removeItemToCartHandler,
+    removeItem: removeItemFromCartHandler,
   };
 
   return <CartContext.Provider value={cartContext}>{children}</CartContext.Provider>;
