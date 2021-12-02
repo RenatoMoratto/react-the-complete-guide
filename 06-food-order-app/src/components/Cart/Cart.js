@@ -1,3 +1,5 @@
+import { useContext } from 'react';
+import CartContext from '../../store/cart-context';
 import Modal from '../UI/Modal/Modal';
 import style from './Cart.module.css';
 
@@ -12,17 +14,19 @@ function Cart(props) {
           price: 12.99,
         },
       ].map((item) => (
-        <li>{item.name}</li>
+        <li key={item.id}>{item.name}</li>
       ))}
     </ul>
   );
+
+  const ctx = useContext(CartContext);
 
   return (
     <Modal onClose={props.onClose}>
       {cartItems}
       <div className={style.total}>
         <span>Total Amount</span>
-        <span>35.62</span>
+        <span>{ctx.totalAmount}</span>
       </div>
       <div className={style.actions}>
         <button className={style['button--alt']} onClick={props.onClose}>
