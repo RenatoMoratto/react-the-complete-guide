@@ -14,21 +14,26 @@ class Users extends Component {
     };
   }
 
+  componentDidUpdate() {
+    if (this.props.users.length === 0) {
+      throw new Error('No users provided!');
+    }
+  }
+
   toggleUsersHandler() {
     this.setState((curState) => {
       return { showUsers: !curState.showUsers };
     });
   }
 
-  const usersList = (
-    <ul>
-      {this.context.users.map((user) => (
-        <User key={user.id} name={user.name} />
-      ))}
-    </ul>
-  );
-
   render() {
+    const usersList = (
+      <ul>
+        {this.context.users.map((user) => (
+          <User key={user.id} name={user.name} />
+        ))}
+      </ul>
+    );
     return (
       <div className={classes.users}>
         <button onClick={this.toggleUsersHandler.bind(this)}>
