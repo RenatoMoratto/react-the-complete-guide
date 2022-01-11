@@ -6,6 +6,7 @@ import style from './AvailableMeals.module.css';
 
 function AvailableMeals() {
   const [meals, setMeals] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
 
   const getMeals = async () => {
     const response = await fetch(
@@ -25,11 +26,16 @@ function AvailableMeals() {
     }
 
     setMeals(loadedMeals);
+    setIsLoading(false);
   };
 
   useEffect(() => {
     getMeals();
   }, []);
+
+  if (isLoading) {
+    return <section className={style.mealsLoading}>Loading</section>;
+  }
 
   const mealsList = meals.map((meal) => (
     <MealItem
